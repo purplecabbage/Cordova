@@ -1,11 +1,14 @@
-steps:
-- uses: actions/checkout@v2
+on:
+  workflow_dispatch:
+    
+uses:
+  actions/checkout@v2
+  actions/upload-artifact@v2
 
-- run: mkdir -p slack-digest
+run: 
+  mkdir -p slack-digest
+  echo hello > slack-digest/world.txt
 
-- run: echo hello > slack-digest/world.txt
-
-- uses: actions/upload-artifact@v2
-  with:
-    name: my-artifact
-    path: slack-digest/world.txt
+with:
+  name: my-artifact
+  path: slack-digest/world.txt
